@@ -2,7 +2,7 @@
 
 Welcome to the repository for my interactive developer portfolio. This single-page web application showcases my full-stack software engineering, computer vision, and workflow automation projects through interactive browser-based simulations designed for recruiters and hiring teams.
 
-* **Live Portfolio:** [https://devrajy112.github.io](https://www.google.com/search?q=https%3A%2F%2Fdevrajy112.github.io) *(or [https://devrajy112.github.io/devrajyadav.github.io](https://www.google.com/search?q=https%3A%2F%2Fdevrajy112.github.io%2Fdevrajyadav.github.io))*
+* **Live Portfolio Website:** https://devrajy112.github.io/
 
 ## Interactive Portfolio Features
 
