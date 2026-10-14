@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Devraj Yadav - Software Engineering & Applied AI/ML Portfolio. Showcasing Full-Stack Web Development, Deep Learning Pipelines, and Workflow Automation projects.">
+  <title>Devraj Yadav | Software Engineering & Applied AI/ML Portfolio</title>
+  <style>
+    :root {
+      --bg-primary: #0a0f1d;
+      --bg-secondary: #111827;
+      --bg-card: rgba(17, 24, 39, 0.85);
+      --bg-card-hover: rgba(30, 41, 59, 0.95);
+      --border-color: #1f2937;
+      --border-focus: #38bdf8;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
+      --accent-indigo: #6366f1;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --badge-bg: rgba(56, 189, 248, 0.12);
+      --badge-text: #38bdf8;
+      --badge-border: rgba(56, 189, 248, 0.3);
+      --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+      --glow-gradient: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(99, 102, 241, 0.15));
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-full: 9999px;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --code-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    [data-theme="light"] {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --border-color: #e2e8f0;
+      --border-focus: #0284c7;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #64748b;
+      --accent-cyan: #0284c7;
+      --accent-blue: #2563eb;
+      --accent-indigo: #4f46e5;
+      --accent-emerald: #059669;
+      --accent-amber: #d97706;
+      --badge-bg: rgba(2, 132, 199, 0.1);
+      --badge-text: #0369a1;
+      --badge-border: rgba(2, 132, 199, 0.25);
+      --card-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+      --glow-gradient: linear-gradient(135deg, rgba(2, 132, 199, 0.08), rgba(99, 102, 241, 0.08));
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Ambient background grid */
+    .bg-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Navigation */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background-color: rgba(10, 15, 29, 0.85);
+      border-bottom: 1px solid var(--border-color);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    [data-theme="light"] header.site-header {
+      background-color: rgba(248, 250, 252, 0.85);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+      color: #ffffff;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.925rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--badge-text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-icon {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .btn-icon:hover {
+      border-color: var(--border-focus);
+      background-color: var(--bg-card-hover);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 4rem 0 3rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2.5rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      border-radius: var(--radius-full);
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--badge-text);
+      margin-bottom: 1.25rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 10px var(--accent-emerald);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-indigo) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-item svg {
+      color: var(--accent-cyan);
+    }
+
+    .hero-bio {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+      max-width: 680px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.4rem;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--border-focus);
+      background-color: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-sm {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+    }
+
+    .btn-subtle {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: var(--accent-indigo);
+    }
+
+    .btn-subtle:hover {
+      background: rgba(99, 102, 241, 0.2);
+    }
+
+    /* Hero Quick Profile Card */
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      width: 320px;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.2), transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .avatar-placeholder {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1.35rem;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    }
+
+    .hero-card-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 0.65rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--badge-text);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .resume-link-banner {
+      background: linear-gradient(90deg, rgba(6, 182, 212, 0.1), rgba(99, 102, 241, 0.1));
+      border: 1px dashed var(--accent-cyan);
+      border-radius: var(--radius-md);
+      padding: 0.85rem;
+      font-size: 0.825rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    /* Role Quick Match Filter Bar */
+    .role-matcher-bar {
+      margin-top: 1.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .role-matcher-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .role-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .role-pill {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-full);
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .role-pill:hover,
+    .role-pill.active {
+      background: var(--badge-bg);
+      border-color: var(--border-focus);
+      color: var(--badge-text);
+    }
+
+    /* Section Styling */
+    section {
+      padding: 4rem 0;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .section-pretitle {
+      font-size: 0.825rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      max-width: 650px;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Skills Interactive Matrix */
+    .skills-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      margin-bottom: 1.75rem;
+      align-items: center;
+    }
+
+    .skill-search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .skill-search-input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.55rem 1rem 0.55rem 2.25rem;
+      color: var(--text-primary);
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .skill-search-input:focus {
+      border-color: var(--border-focus);
+    }
+
+    .skill-search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .skill-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tab-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-md);
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .skill-tab-btn:hover,
+    .skill-tab-btn.active {
+      background: var(--badge-bg);
+      border-color: var(--badge-border);
+      color: var(--badge-text);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .skill-card:hover {
+      border-color: var(--border-focus);
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow);
+    }
+
+    .skill-card.highlighted {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 16px rgba(6, 182, 212, 0.3);
+      background: rgba(6, 182, 212, 0.05);
+    }
+
+    .skill-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .skill-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-primary);
+    }
+
+    .skill-category-badge {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .skill-bar-container {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: 0.65rem;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: var(--radius-full);
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));
+      transition: width 0.8s ease-in-out;
+    }
+
+    .skill-context {
+      font-size: 0.825rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .skill-associated-project {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--badge-text);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Projects Section */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease;
+    }
+
+    .project-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-title-area h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .project-type-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      border: 1px solid var(--badge-border);
+    }
+
+    .project-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.65rem;
+    }
+
+    .tech-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-family: var(--code-font);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .project-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .project-body {
+        grid-template-columns: 1fr;
+      }
+      .hero-section {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        width: 100%;
+      }
+    }
+
+    .project-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .project-bullets li {
+      position: relative;
+      padding-left: 1.4rem;
+      color: var(--text-secondary);
+      font-size: 0.925rem;
+      line-height: 1.55;
+    }
+
+    .project-bullets li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent-cyan);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .project-interactive-panel {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .panel-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--badge-text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Simulator Styles for CourtIQ (RLS & Architecture) */
+    .sim-terminal {
+      background: #05070e;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      font-family: var(--code-font);
+      font-size: 0.8rem;
+      color: #38bdf8;
+      height: 150px;
+      overflow-y: auto;
+      margin-bottom: 0.85rem;
+    }
+
+    .sim-log-line {
+      margin-bottom: 0.35rem;
+      line-height: 1.4;
+    }
+
+    .sim-log-line.success { color: #34d399; }
+    .sim-log-line.warn { color: #fbbf24; }
+    .sim-log-line.danger { color: #f87171; }
+    .sim-log-line.muted { color: #64748b; }
+
+    .sim-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* Simulator Styles for Computer Vision */
+    .cv-canvas-area {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      background: #05070e;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-sm);
+      padding: 0.85rem;
+      min-height: 140px;
+      margin-bottom: 0.85rem;
+    }
+
+    canvas.cv-canvas {
+      border: 1px solid #334155;
+      border-radius: 4px;
+      background-color: #000;
+    }
+
+    .cv-metrics {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.775rem;
+      color: var(--text-secondary);
+    }
+
+    .metric-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-weight: 700;
+      color: #34d399;
+    }
+
+    /* Simulator Styles for n8n Workflow Engine */
+    .n8n-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.35rem;
+      margin-bottom: 0.85rem;
+      overflow-x: auto;
+      padding: 0.5rem 0;
+    }
+
+    .flow-node {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.65rem;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      flex: 1;
+      min-width: 75px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .flow-node.active {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.4);
+      transform: scale(1.05);
+    }
+
+    .flow-node.completed {
+      border-color: var(--accent-emerald);
+      color: var(--accent-emerald);
+    }
+
+    .flow-arrow {
+      color: #475569;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    /* Education & Leadership Section */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .timeline-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .timeline-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .timeline-org {
+      font-size: 0.95rem;
+      color: var(--badge-text);
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    .timeline-date {
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .coursework-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .course-tag {
+      font-size: 0.775rem;
+      padding: 0.25rem 0.55rem;
+      background: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      color: var(--text-secondary);
+      border-radius: var(--radius-sm);
+    }
+
+    /* Recruiter Quick Message & Contact */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(17, 24, 39, 0.95), rgba(30, 41, 59, 0.95));
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    @media (max-width: 850px) {
+      .contact-card {
+        grid-template-columns: 1fr;
+        padding: 1.75rem;
+      }
+    }
+
+    .contact-info h3 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .contact-channel {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin: 1.25rem 0;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .copy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.65rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: var(--code-font);
+      font-size: 0.85rem;
+      color: var(--badge-text);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .copy-pill:hover {
+      border-color: var(--border-focus);
+    }
+
+    .recruiter-note-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-group label {
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .form-control {
+      background: #0a0f1d;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.65rem 0.85rem;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .form-control:focus {
+      border-color: var(--border-focus);
+    }
+
+    /* Modal for Resume Deployment Instructions */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      max-width: 620px;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      position: relative;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .instruction-step {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      color: var(--badge-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.45;
+    }
+
+    .code-snippet {
+      background: #05070e;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      font-family: var(--code-font);
+      font-size: 0.8rem;
+      color: #38bdf8;
+      margin-top: 0.5rem;
+      display: block;
+      word-break: break-all;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: #1e293b;
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--accent-cyan);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer.site-footer {
+      border-top: 1px solid var(--border-color);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Print Stylesheet for clean 1-2 page resume export */
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt;
+      }
+      .bg-grid, .site-header, .btn, .role-matcher-bar, .skills-controls, .sim-controls, .toast-container, .modal-backdrop, .project-interactive-panel, .contact-card form, footer.site-footer {
+        display: none !important;
+      }
+      .container {
+        padding: 0;
+        max-width: 100%;
+      }
+      .hero-section {
+        padding: 1rem 0;
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        display: none;
+      }
+      .project-card, .timeline-card, .contact-card {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        background: #fff !important;
+        page-break-inside: avoid;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+      }
+      .project-body {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      section {
+        padding: 1.5rem 0;
+        border-top: 1px solid #ccc;
+      }
+    }
+  </style>
+</head>
+<body data-theme="dark">
+  <div class="bg-grid"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#" class="brand-logo">
+        <span class="brand-badge">DY</span>
+        <span>Devraj Yadav</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Leadership</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="btn-icon" id="themeToggle" title="Toggle Dark/Light Mode" aria-label="Toggle Theme">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button class="btn btn-sm btn-outline" id="openHostGuideBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          Add to Resume
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero-section" id="about">
+      <div class="hero-content">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Open to Software Engineering & Applied AI/ML Internships</span>
+        </div>
+
+        <h1 class="hero-title">
+          Hi, I'm <span class="highlight">Devraj Yadav</span>
+        </h1>
+        <div class="hero-subtitle">
+          Full-Stack Developer & Applied Machine Learning Engineer
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>Indore, Madhya Pradesh, India</span>
+          </div>
+          <div class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            <span class="copy-pill" onclick="copyEmail()" title="Click to copy">dev112yad@gmail.com</span>
+          </div>
+          <div class="hero-meta-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            <span>BCA Student @ Manipal University Jaipur (MUJ)</span>
+          </div>
+        </div>
+
+        <p class="hero-bio">
+          Bachelor of Computer Applications (BCA) student with hands-on expertise building production-grade full-stack web applications (Next.js, React, Supabase, PostgreSQL), architecting scalable backend Edge Functions with Row-Level Security, training computer vision deep learning pipelines (PyTorch, OpenCV), and building automated event-driven data engines (Python, n8n).
+        </p>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Explore Projects
+          </a>
+          <a href="#skills" class="btn btn-outline">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Technical Skills
+          </a>
+          <button class="btn btn-outline" onclick="window.print()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            Print / PDF View
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Profile Card -->
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <div class="avatar-placeholder">DY</div>
+          <div>
+            <div style="font-weight: 700; font-size: 1.1rem;">Devraj Yadav</div>
+            <div style="font-size: 0.8rem; color: var(--accent-cyan);">Software & AI/ML</div>
+          </div>
+        </div>
+
+        <div class="hero-card-stats">
+          <div class="stat-item">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Core Projects</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">92%</span>
+            <span class="stat-label">CNN Accuracy</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">2027</span>
+            <span class="stat-label">BCA Batch</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">ISP</span>
+            <span class="stat-label">Campus Lead</span>
+          </div>
+        </div>
+
+        <div class="resume-link-banner">
+          <div>
+            <strong>Interactive Portfolio Link</strong>
+            <div style="font-size: 0.725rem; color: var(--text-muted);">Embed in your resume header</div>
+          </div>
+          <button class="btn btn-sm btn-subtle" onclick="copyPortfolioLink()">Copy URL</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recruiter Role Matcher Interactive Bar -->
+    <div class="role-matcher-bar">
+      <div class="role-matcher-label">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--accent-cyan)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        <span>Recruiter Quick Filter (Match Devraj to your open position):</span>
+      </div>
+      <div class="role-pills">
+        <button class="role-pill active" onclick="filterByRole('all')">Show All</button>
+        <button class="role-pill" onclick="filterByRole('fullstack')">Full-Stack Engineer</button>
+        <button class="role-pill" onclick="filterByRole('aiml')">Applied AI / ML Engineer</button>
+        <button class="role-pill" onclick="filterByRole('backend')">Backend & Automation</button>
+      </div>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <div class="section-header">
+        <div>
+          <span class="section-pretitle">Core Competencies</span>
+          <h2 class="section-title">Technical Skills Matrix</h2>
+          <p class="section-desc">Interactive overview of programming languages, machine learning frameworks, cloud architectures, and core computer science fundamentals.</p>
+        </div>
+      </div>
+
+      <div class="skills-controls">
+        <div class="skill-search-box">
+          <svg class="skill-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="text" id="skillSearchInput" class="skill-search-input" placeholder="Search skills (e.g. Python, Next.js, PyTorch)..." oninput="filterSkills()">
+        </div>
+
+        <div class="skill-tabs">
+          <button class="skill-tab-btn active" onclick="selectSkillCategory('all')">All Skills</button>
+          <button class="skill-tab-btn" onclick="selectSkillCategory('languages')">Languages</button>
+          <button class="skill-tab-btn" onclick="selectSkillCategory('ml')">ML & Data</button>
+          <button class="skill-tab-btn" onclick="selectSkillCategory('fullstack')">Full-Stack & Cloud</button>
+          <button class="skill-tab-btn" onclick="selectSkillCategory('tools')">Tools & Automation</button>
+          <button class="skill-tab-btn" onclick="selectSkillCategory('core')">Core CS</button>
+        </div>
+      </div>
+
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <div class="section-header">
+        <div>
+          <span class="section-pretitle">Production & Research</span>
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-desc">End-to-end applications demonstrating architecture design, machine learning pipelines, and robust automation.</p>
+        </div>
+      </div>
+
+      <div class="projects-container">
+        <!-- Project 1: CourtIQ -->
+        <div class="project-card" data-tags="fullstack,backend">
+          <div class="project-header">
+            <div class="project-title-area">
+              <h3>
+                CourtIQ | Full-Stack Web Application
+                <span class="project-type-tag">Full-Stack & Cloud</span>
+              </h3>
+              <div class="project-tech-stack">
+                <span class="tech-chip">Next.js</span>
+                <span class="tech-chip">React</span>
+                <span class="tech-chip">TypeScript</span>
+                <span class="tech-chip">Supabase (PostgreSQL)</span>
+                <span class="tech-chip">Tailwind CSS</span>
+                <span class="tech-chip">Row Level Security</span>
+                <span class="tech-chip">Edge Functions</span>
+                <span class="tech-chip">Vercel</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.85rem; color: var(--text-primary);">Key Architectural Achievements:</h4>
+              <ul class="project-bullets">
+                <li><strong>Responsive Full-Stack Architecture:</strong> Architected a high-performance web platform utilizing Next.js and Supabase for robust relational data management and authenticated user experiences.</li>
+                <li><strong>Multi-Tenant Data Isolation:</strong> Designed PostgreSQL schemas with rigorous Row-Level Security (RLS) policies and role-based access control (RBAC), guaranteeing strict cross-tenant data privacy.</li>
+                <li><strong>Serverless Supabase Edge Functions:</strong> Developed distributed backend services written in TypeScript to execute low-latency business logic and secure API calls.</li>
+                <li><strong>Automated CI/CD:</strong> Configured automated deployment workflows on Vercel for preview branches, atomic production builds, and maximum uptime.</li>
+              </ul>
+            </div>
+
+            <!-- Interactive Panel: CourtIQ RLS Simulator -->
+            <div class="project-interactive-panel">
+              <div>
+                <div class="panel-header">
+                  <span class="panel-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Interactive RLS Security Simulator
+                  </span>
+                  <span style="font-size: 0.725rem; color: var(--accent-emerald);">Live Schema Test</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">
+                  Simulate database tenant isolation. Test how Row-Level Security prevents unauthorized cross-tenant data leakage:
+                </p>
+                <div class="sim-terminal" id="courtIqTerminal">
+                  <div class="sim-log-line muted">> System initialized. Ready to execute PostgreSQL query.</div>
+                  <div class="sim-log-line muted">> Active DB: court_iq_prod | RLS: ENABLED</div>
+                </div>
+              </div>
+
+              <div class="sim-controls">
+                <button class="btn btn-sm btn-outline" onclick="runRlsTest('tenant_a')">
+                  Query Tenant A
+                </button>
+                <button class="btn btn-sm btn-outline" onclick="runRlsTest('cross_tenant')">
+                  Test Cross-Tenant Attack
+                </button>
+                <button class="btn btn-sm btn-subtle" onclick="runEdgeFunctionDemo()">
+                  Trigger Edge Function
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: CV & Deep Learning Pipeline -->
+        <div class="project-card" data-tags="aiml">
+          <div class="project-header">
+            <div class="project-title-area">
+              <h3>
+                Computer Vision & Deep Learning Pipeline
+                <span class="project-type-tag">Applied AI & Computer Vision</span>
+              </h3>
+              <div class="project-tech-stack">
+                <span class="tech-chip">Python</span>
+                <span class="tech-chip">PyTorch</span>
+                <span class="tech-chip">OpenCV</span>
+                <span class="tech-chip">NumPy</span>
+                <span class="tech-chip">Scikit-Learn</span>
+                <span class="tech-chip">CNN</span>
+                <span class="tech-chip">Transfer Learning</span>
+                <span class="tech-chip">ROC-AUC</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.85rem; color: var(--text-primary);">Key Research & Engineering Highlights:</h4>
+              <ul class="project-bullets">
+                <li><strong>End-to-End Deep Learning Pipeline:</strong> Engineered convolutional neural networks (CNNs) in PyTorch for robust image classification, automated feature extraction, and localization.</li>
+                <li><strong>High Accuracy & Generalization:</strong> Implemented custom data augmentation, normalization, and transfer learning, achieving an impressive <strong>92% classification accuracy</strong>.</li>
+                <li><strong>Real-Time OpenCV Processing:</strong> Streamed and preprocessed video/image frames using OpenCV for Gaussian edge detection, contour mapping, and dynamic bounding box inference.</li>
+                <li><strong>Comprehensive Model Evaluation:</strong> Evaluated performance across precision, recall, F1-scores, and ROC-AUC curves, pinpointing boundary error modes to optimize confidence thresholds.</li>
+              </ul>
+            </div>
+
+            <!-- Interactive Panel: Real-Time CV Filter & CNN Inference Simulator -->
+            <div class="project-interactive-panel">
+              <div>
+                <div class="panel-header">
+                  <span class="panel-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m4.93 4.93 4.24 4.24"></path><path d="m14.83 9.17 4.24-4.24"></path><path d="m14.83 14.83 4.24 4.24"></path><path d="m9.17 14.83-4.24 4.24"></path></svg>
+                    Live Canvas Vision Simulator
+                  </span>
+                  <span class="metric-badge">Accuracy: 92.4%</span>
+                </div>
+                <div class="cv-canvas-area">
+                  <canvas id="cvCanvas" class="cv-canvas" width="130" height="130"></canvas>
+                  <div class="cv-metrics">
+                    <div><strong>Input Frame:</strong> Synthetic Test Subject</div>
+                    <div><strong>Current Filter:</strong> <span id="currentCvFilter" style="color:var(--accent-cyan);">Raw Input</span></div>
+                    <div><strong>Inference Confidence:</strong> <span id="cvConfidence" style="color:#34d399;">94.8%</span></div>
+                    <div><strong>ROC-AUC Score:</strong> 0.961</div>
+                    <div><strong>Latency:</strong> ~14ms (GPU simulated)</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sim-controls">
+                <button class="btn btn-sm btn-outline" onclick="applyCvFilter('raw')">Raw Image</button>
+                <button class="btn btn-sm btn-outline" onclick="applyCvFilter('grayscale')">Grayscale</button>
+                <button class="btn btn-sm btn-outline" onclick="applyCvFilter('edges')">Edge Detect (Sobel)</button>
+                <button class="btn btn-sm btn-subtle" onclick="applyCvFilter('bbox')">CNN Bounding Box</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Automated Workflow & Data Pipeline Engine -->
+        <div class="project-card" data-tags="backend">
+          <div class="project-header">
+            <div class="project-title-area">
+              <h3>
+                Automated Workflow & Data Pipeline Engine
+                <span class="project-type-tag">Automation & Cloud Pipelines</span>
+              </h3>
+              <div class="project-tech-stack">
+                <span class="tech-chip">Python</span>
+                <span class="tech-chip">n8n</span>
+                <span class="tech-chip">RESTful APIs</span>
+                <span class="tech-chip">JSON Schema</span>
+                <span class="tech-chip">Webhooks</span>
+                <span class="tech-chip">LLM / AI Integration</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div>
+              <h4 style="font-size: 1rem; margin-bottom: 0.85rem; color: var(--text-primary);">Key Automation & Ingestion Highlights:</h4>
+              <ul class="project-bullets">
+                <li><strong>Event-Driven Orchestration:</strong> Architected autonomous workflows using n8n and modular Python microscripts connecting diverse external APIs, databases, and microservices.</li>
+                <li><strong>Webhook Ingestion & Transformation:</strong> Created automated ingestion pipelines featuring strict JSON schema validation, idempotency guards, and automatic retry failovers.</li>
+                <li><strong>AI / LLM Endpoint Integration:</strong> Integrated machine learning and LLM endpoints directly into active pipelines for real-time document summarization and metadata tagging.</li>
+                <li><strong>Elimination of Manual Latency:</strong> Replaced error-prone manual data handling with resilient zero-maintenance streaming pipelines.</li>
+              </ul>
+            </div>
+
+            <!-- Interactive Panel: n8n Flow Step Simulator -->
+            <div class="project-interactive-panel">
+              <div>
+                <div class="panel-header">
+                  <span class="panel-title">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    Interactive n8n Pipeline Executor
+                  </span>
+                  <span style="font-size: 0.725rem; color: var(--accent-amber);" id="pipelineStatus">Status: Idle</span>
+                </div>
+                
+                <div class="n8n-flow">
+                  <div class="flow-node" id="nodeWebhook">1. Webhook</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" id="nodeValidate">2. Validate</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" id="nodeEnrich">3. AI Enrich</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" id="nodeSync">4. DB Sync</div>
+                </div>
+
+                <div class="sim-terminal" id="n8nTerminal" style="height: 100px;">
+                  <div class="sim-log-line muted">> Click "Execute Ingestion Pipeline" to simulate an event trigger.</div>
+                </div>
+              </div>
+
+              <div class="sim-controls">
+                <button class="btn btn-sm btn-primary" id="runPipelineBtn" onclick="runPipelineSimulation()">
+                  Execute Ingestion Pipeline
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience, Leadership & Education -->
+    <section id="experience">
+      <div class="section-header">
+        <div>
+          <span class="section-pretitle">Trajectory & Background</span>
+          <h2 class="section-title">Leadership & Education</h2>
+          <p class="section-desc">Academic excellence at Manipal University Jaipur coupled with proactive campus community leadership.</p>
+        </div>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Leadership Card -->
+        <div class="timeline-card">
+          <div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Internshala Student Partner (ISP)</h3>
+                <div class="timeline-org">Internshala • Campus Leadership & Outreach</div>
+              </div>
+              <span class="timeline-date">Feb 2026 – Present</span>
+            </div>
+
+            <ul class="project-bullets" style="margin-top: 1rem;">
+              <li><strong>Campus Outreach Leadership:</strong> Spearheaded university-wide outreach initiatives to expand student awareness of technical certifications, coding workshops, and internship openings.</li>
+              <li><strong>Peer Technical Mentorship:</strong> Guided aspiring developers on crafting high-impact resumes, building portfolio projects, and navigating tech interviews.</li>
+              <li><strong>Cross-Functional Coordination:</strong> Organized webinars and virtual orientation sessions bridging industry hiring standards and student readiness.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Education Card -->
+        <div class="timeline-card" id="education">
+          <div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-title">Bachelor of Computer Applications (BCA)</h3>
+                <div class="timeline-org">Manipal University Jaipur (MUJ)</div>
+              </div>
+              <span class="timeline-date">Expected 2027</span>
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 0.925rem; margin-top: 0.75rem;">
+              Rigorous undergraduate training combining practical software engineering practices, algorithmic optimization, and modern database theory.
+            </p>
+
+            <div style="margin-top: 1.25rem;">
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-primary); text-transform: uppercase; letter-spacing: 0.05em;">
+                Relevant University Coursework:
+              </div>
+              <div class="coursework-tags">
+                <span class="course-tag">Data Structures & Algorithms</span>
+                <span class="course-tag">OOP (C++ & Java)</span>
+                <span class="course-tag">Operating Systems</span>
+                <span class="course-tag">Database Management (DBMS)</span>
+                <span class="course-tag">Software Engineering</span>
+                <span class="course-tag">Computer Networks</span>
+                <span class="course-tag">Web Design & Architecture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recruiter Contact & Quick Connect -->
+    <section id="contact">
+      <div class="contact-card">
+        <div class="contact-info">
+          <span class="section-pretitle">Get In Touch</span>
+          <h3>Let's Build Something Great Together</h3>
+          <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 0.95rem;">
+            I am actively interviewing for <strong>Software Engineering Intern</strong> and <strong>Applied AI / Machine Learning Intern</strong> roles. Have an opportunity or want to discuss a project? Drop me a message!
+          </p>
+
+          <div class="contact-channel">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--accent-cyan)"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Direct Email:</div>
+              <span class="copy-pill" onclick="copyEmail()">dev112yad@gmail.com</span>
+            </div>
+          </div>
+
+          <div class="contact-channel">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" color="var(--accent-cyan)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Location:</div>
+              <strong style="color: var(--text-primary); font-size: 0.9rem;">Indore, Madhya Pradesh, India</strong>
+              <div style="font-size: 0.75rem; color: var(--accent-emerald);">Open to Remote & On-Site Positions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Email Drafter Form -->
+        <form class="recruiter-note-form" onsubmit="handleRecruiterSend(event)">
+          <div class="form-group">
+            <label for="recruiterName">Your Name / Company</label>
+            <input type="text" id="recruiterName" class="form-control" placeholder="e.g. Jane Doe from TechCorp" required>
+          </div>
+          <div class="form-group">
+            <label for="recruiterRole">Role / Opportunity</label>
+            <input type="text" id="recruiterRole" class="form-control" placeholder="e.g. Software Engineer Intern (Summer/Winter)" required>
+          </div>
+          <div class="form-group">
+            <label for="recruiterMessage">Message or Interview Link</label>
+            <textarea id="recruiterMessage" class="form-control" rows="3" placeholder="Hi Devraj, we loved your CourtIQ project and CV pipeline..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="justify-content: center;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Send Email to Devraj
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal: Instructions to Add Website to Resume -->
+  <div class="modal-backdrop" id="hostGuideModal" onclick="closeModalOnBackdrop(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary);">
+          How to Add This Portfolio to Your Resume
+        </h3>
+        <button class="modal-close" onclick="closeHostGuideModal()">&times;</button>
+      </div>
+
+      <div class="instruction-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Host It for Free in 2 Minutes (GitHub Pages / Vercel)</h4>
+          <p>You can host this standalone HTML file directly with zero server configuration:</p>
+          <span class="code-snippet">Create repo on GitHub → Upload this file as `index.html` → Settings → Pages → Enable</span>
+          <p style="margin-top: 0.35rem;">Or drag-and-drop the folder into <a href="https://vercel.com" target="_blank" style="color: var(--accent-cyan);">Vercel</a> or <a href="https://netlify.com" target="_blank" style="color: var(--accent-cyan);">Netlify Drop</a> to get a live custom domain.</p>
+        </div>
+      </div>
+
+      <div class="instruction-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Add the Clickable Link to Your Resume Header</h4>
+          <p>In your resume's contact section right next to your email, add:</p>
+          <span class="code-snippet">Portfolio: https://yourusername.github.io/portfolio | GitHub | LinkedIn</span>
+        </div>
+      </div>
+
+      <div class="instruction-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Optional: Generate a Free QR Code for Printed Resumes</h4>
+          <p>If you hand out physical paper resumes at career fairs or on-campus events, add a small 1x1 inch QR code linking directly to this interactive site so recruiters can open your live demos on their phones!</p>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+        <button class="btn btn-primary btn-sm" onclick="closeHostGuideModal()">Got It</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container">
+    <div class="toast" id="toastNotification">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      <span id="toastMessage">Email copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2026 Devraj Yadav. Designed & Engineered for High-Impact Job Applications.</p>
+      <p style="font-size: 0.775rem; margin-top: 0.35rem;">Indore, Madhya Pradesh, India • BCA Candidate at Manipal University Jaipur (MUJ)</p>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript Application -->
+  <script>
+    // Technical Skills Data
+    const skillsData = [
+      // Languages
+      { name: "Python", category: "languages", level: 95, context: "Primary language for PyTorch ML pipelines, OpenCV processing, and automation engines", project: "CV Pipeline & n8n Engine" },
+      { name: "TypeScript", category: "languages", level: 90, context: "Backend Supabase Edge Functions & type-safe React/Next.js frontend development", project: "CourtIQ" },
+      { name: "JavaScript (ES6+)", category: "languages", level: 92, context: "Modern async patterns, DOM manipulation, REST integration", project: "CourtIQ" },
+      { name: "SQL (PostgreSQL)", category: "languages", level: 88, context: "Relational schema design, Row-Level Security policies, indexing", project: "CourtIQ (Supabase)" },
+      { name: "Java", category: "languages", level: 80, context: "Object-oriented software systems and academic programming coursework", project: "University Lab Practicals" },
+      { name: "C++", category: "languages", level: 82, context: "Low-level memory management, data structures & algorithms (DSA)", project: "BCA Core Coursework" },
+
+      // ML & Data
+      { name: "PyTorch", category: "ml", level: 90, context: "Convolutional neural networks (CNNs), custom datasets, transfer learning", project: "Computer Vision Pipeline" },
+      { name: "OpenCV", category: "ml", level: 88, context: "Image & frame preprocessing, Sobel/Canny edge filters, contour localization", project: "Computer Vision Pipeline" },
+      { name: "Scikit-Learn", category: "ml", level: 86, context: "Classification models, data preprocessing pipelines, evaluation metrics", project: "Predictive Modeling" },
+      { name: "NumPy & Pandas", category: "ml", level: 90, context: "High-performance vector mathematics, matrix manipulations, and tabular analysis", project: "Data Engineering" },
+      { name: "Model Evaluation", category: "ml", level: 88, context: "Precision, Recall, F1-Score, ROC-AUC curve analysis & threshold tuning", project: "CV Pipeline (92% Acc)" },
+      { name: "TensorFlow", category: "ml", level: 78, context: "Deep neural network prototyping and model evaluation", project: "ML Architecture" },
+
+      // Full-Stack & Cloud
+      { name: "Next.js", category: "fullstack", level: 92, context: "Full-stack SSR/SSG web application architecture, API routes", project: "CourtIQ" },
+      { name: "React.js", category: "fullstack", level: 92, context: "Component lifecycles, custom hooks, responsive state management", project: "CourtIQ" },
+      { name: "Supabase", category: "fullstack", level: 90, context: "PostgreSQL, Row-Level Security (RLS), TypeScript Edge Functions, Auth", project: "CourtIQ" },
+      { name: "Tailwind CSS", category: "fullstack", level: 90, context: "Rapid utility-first styling, dark/light theme systems, responsive UI", project: "CourtIQ & Portfolio" },
+      { name: "RESTful APIs", category: "fullstack", level: 94, context: "API design, asynchronous webhook consumption, JSON payload handling", project: "Automation Engine" },
+      { name: "Vercel", category: "fullstack", level: 88, context: "Continuous deployment (CI/CD), environment management, global edge routing", project: "CourtIQ Deployment" },
+      { name: "Firebase", category: "fullstack", level: 80, context: "Cloud data storage, authentication, and rapid application prototyping", project: "Cloud Projects" },
+
+      // Tools & Automation
+      { name: "n8n Workflow Automation", category: "tools", level: 92, context: "Event-driven visual pipeline design, custom webhook nodes, error retry", project: "Automated Data Engine" },
+      { name: "Git & GitHub", category: "tools", level: 90, context: "Version control, feature branching, pull requests, automated actions", project: "All Repositories" },
+      { name: "Linux / Bash", category: "tools", level: 85, context: "Shell scripting, command-line toolchains, server environments", project: "Dev Environments" },
+      { name: "Postman", category: "tools", level: 88, context: "API test suite design, automated endpoint validation, mock servers", project: "Backend Integration" },
+      { name: "VS Code", category: "tools", level: 95, context: "Primary IDE configured with linting, debugging, and container extensions", project: "Core Development" },
+
+      // Core CS
+      { name: "Data Structures & Algorithms", category: "core", level: 86, context: "Trees, graphs, dynamic programming, sorting, complexity analysis (Big-O)", project: "BCA Academic Mastery" },
+      { name: "Object-Oriented Programming", category: "core", level: 90, context: "Encapsulation, inheritance, polymorphism, clean modular design", project: "C++ & Java Core" },
+      { name: "Database Normalization & Security", category: "core", level: 88, context: "B-Tree indexes, 3NF schema design, multi-tenant RLS isolation", project: "CourtIQ / PostgreSQL" }
+    ];
+
+    let currentSkillFilter = "all";
+    let activeRoleFilter = "all";
+
+    // Initialize DOM
+    document.addEventListener("DOMContentLoaded", () => {
+      renderSkills(skillsData);
+      initCvCanvas();
+    });
+
+    // Theme Toggle Functionality
+    const themeToggleBtn = document.getElementById("themeToggle");
+    themeToggleBtn.addEventListener("click", () => {
+      const currentTheme = document.body.getAttribute("data-theme");
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+      document.body.setAttribute("data-theme", nextTheme);
+      showToast(`Switched to ${nextTheme} theme`);
+    });
+
+    // Render Skills
+    function renderSkills(skills) {
+      const grid = document.getElementById("skillsGrid");
+      grid.innerHTML = "";
+
+      skills.forEach(skill => {
+        const card = document.createElement("div");
+        card.className = "skill-card";
+        card.setAttribute("data-category", skill.category);
+        card.onclick = () => highlightSkillProjects(skill.name);
+
+        card.innerHTML = `
+          <div class="skill-card-top">
+            <span class="skill-name">${skill.name}</span>
+            <span class="skill-category-badge">${skill.category}</span>
+          </div>
+          <div class="skill-bar-container">
+            <div class="skill-bar-fill" style="width: ${skill.level}%"></div>
+          </div>
+          <p class="skill-context">${skill.context}</p>
+          <div class="skill-associated-project">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            ${skill.project}
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter Skills by category
+    function selectSkillCategory(category) {
+      currentSkillFilter = category;
+      document.querySelectorAll(".skill-tab-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.textContent.toLowerCase().includes(category) || (category === "all" && btn.textContent.includes("All")));
+      });
+      filterSkills();
+    }
+
+    // Filter Skills by search and category
+    function filterSkills() {
+      const searchVal = document.getElementById("skillSearchInput").value.toLowerCase().trim();
+      const filtered = skillsData.filter(s => {
+        const matchCategory = currentSkillFilter === "all" || s.category === currentSkillFilter;
+        const matchSearch = s.name.toLowerCase().includes(searchVal) || s.context.toLowerCase().includes(searchVal) || s.project.toLowerCase().includes(searchVal);
+        return matchCategory && matchSearch;
+      });
+      renderSkills(filtered);
+    }
+
+    // Highlight associated project cards when a skill is clicked
+    function highlightSkillProjects(skillName) {
+      showToast(`Selected skill: ${skillName}`);
+      const cards = document.querySelectorAll(".project-card");
+      cards.forEach(card => {
+        if (card.textContent.toLowerCase().includes(skillName.toLowerCase())) {
+          card.style.borderColor = "var(--accent-cyan)";
+          card.style.boxShadow = "0 0 20px rgba(6, 182, 212, 0.4)";
+          setTimeout(() => {
+            card.style.borderColor = "";
+            card.style.boxShadow = "";
+          }, 2500);
+        }
+      });
+    }
+
+    // Role Matcher Filter
+    function filterByRole(role) {
+      activeRoleFilter = role;
+      document.querySelectorAll(".role-pill").forEach(p => p.classList.remove("active"));
+      event.target.classList.add("active");
+
+      const projectCards = document.querySelectorAll(".project-card");
+      const skillCards = document.querySelectorAll(".skill-card");
+
+      if (role === "all") {
+        projectCards.forEach(c => c.style.display = "block");
+        selectSkillCategory("all");
+        showToast("Displaying full comprehensive resume profile");
+        return;
+      }
+
+      if (role === "fullstack") {
+        selectSkillCategory("fullstack");
+        projectCards.forEach(c => {
+          c.style.display = c.getAttribute("data-tags").includes("fullstack") ? "block" : "none";
+        });
+        showToast("Filtered for Full-Stack Developer roles");
+      } else if (role === "aiml") {
+        selectSkillCategory("ml");
+        projectCards.forEach(c => {
+          c.style.display = c.getAttribute("data-tags").includes("aiml") ? "block" : "none";
+        });
+        showToast("Filtered for Applied AI & Deep Learning roles");
+      } else if (role === "backend") {
+        selectSkillCategory("tools");
+        projectCards.forEach(c => {
+          c.style.display = c.getAttribute("data-tags").includes("backend") ? "block" : "none";
+        });
+        showToast("Filtered for Backend & Automation roles");
+      }
+    }
+
+    // CourtIQ Interactive RLS Simulator Logic
+    function runRlsTest(type) {
+      const term = document.getElementById("courtIqTerminal");
+      const timestamp = new Date().toLocaleTimeString();
+
+      if (type === "tenant_a") {
+        term.innerHTML += `
+          <div class="sim-log-line muted">[${timestamp}] SELECT * FROM cases WHERE tenant_id = auth.uid()</div>
+          <div class="sim-log-line success">> 200 OK: 14 tenant-isolated rows returned. Latency: 18ms.</div>
+        `;
+      } else if (type === "cross_tenant") {
+        term.innerHTML += `
+          <div class="sim-log-line muted">[${timestamp}] SELECT * FROM cases WHERE tenant_id = 'tenant_b_unauthorized'</div>
+          <div class="sim-log-line danger">> 403 FORBIDDEN: Blocked by PostgreSQL Row-Level Security policy (rls_tenant_isolation).</div>
+          <div class="sim-log-line success">> Security status: Zero data leakage confirmed.</div>
+        `;
+      }
+      term.scrollTop = term.scrollHeight;
+    }
+
+    function runEdgeFunctionDemo() {
+      const term = document.getElementById("courtIqTerminal");
+      const timestamp = new Date().toLocaleTimeString();
+      term.innerHTML += `
+        <div class="sim-log-line muted">[${timestamp}] POST /functions/v1/process-case-analytics</div>
+        <div class="sim-log-line success">> Edge Function executed (TypeScript / Deno). Duration: 24ms. Region: bom1 (Mumbai).</div>
+      `;
+      term.scrollTop = term.scrollHeight;
+    }
+
+    // Computer Vision Canvas Visualizer
+    let cvCanvas, cvCtx;
+    function initCvCanvas() {
+      cvCanvas = document.getElementById("cvCanvas");
+      if (!cvCanvas) return;
+      cvCtx = cvCanvas.getContext("2d");
+      drawCvPattern("raw");
+    }
+
+    function applyCvFilter(filterName) {
+      const label = document.getElementById("currentCvFilter");
+      const conf = document.getElementById("cvConfidence");
+      
+      if (filterName === "raw") {
+        label.textContent = "Raw RGB Input";
+        conf.textContent = "94.8%";
+      } else if (filterName === "grayscale") {
+        label.textContent = "Grayscale Normalized";
+        conf.textContent = "95.2%";
+      } else if (filterName === "edges") {
+        label.textContent = "Sobel Edge Kernel";
+        conf.textContent = "91.7%";
+      } else if (filterName === "bbox") {
+        label.textContent = "CNN Feature Detection";
+        conf.textContent = "98.4%";
+      }
+      drawCvPattern(filterName);
+      showToast(`Vision pipeline applied: ${filterName}`);
+    }
+
+    function drawCvPattern(mode) {
+      if (!cvCtx) return;
+      const w = cvCanvas.width;
+      const h = cvCanvas.height;
+      cvCtx.clearRect(0, 0, w, h);
+
+      if (mode === "raw") {
+        // Draw colorful test geometry
+        cvCtx.fillStyle = "#1e293b";
+        cvCtx.fillRect(0, 0, w, h);
+        cvCtx.fillStyle = "#06b6d4";
+        cvCtx.beginPath();
+        cvCtx.arc(w / 2, h / 2, 35, 0, Math.PI * 2);
+        cvCtx.fill();
+        cvCtx.fillStyle = "#3b82f6";
+        cvCtx.fillRect(25, 25, 30, 30);
+        cvCtx.fillStyle = "#f59e0b";
+        cvCtx.fillRect(75, 75, 30, 30);
+      } else if (mode === "grayscale") {
+        cvCtx.fillStyle = "#222222";
+        cvCtx.fillRect(0, 0, w, h);
+        cvCtx.fillStyle = "#999999";
+        cvCtx.beginPath();
+        cvCtx.arc(w / 2, h / 2, 35, 0, Math.PI * 2);
+        cvCtx.fill();
+        cvCtx.fillStyle = "#cccccc";
+        cvCtx.fillRect(25, 25, 30, 30);
+        cvCtx.fillStyle = "#666666";
+        cvCtx.fillRect(75, 75, 30, 30);
+      } else if (mode === "edges") {
+        cvCtx.fillStyle = "#000000";
+        cvCtx.fillRect(0, 0, w, h);
+        cvCtx.strokeStyle = "#38bdf8";
+        cvCtx.lineWidth = 2;
+        cvCtx.beginPath();
+        cvCtx.arc(w / 2, h / 2, 35, 0, Math.PI * 2);
+        cvCtx.stroke();
+        cvCtx.strokeRect(25, 25, 30, 30);
+        cvCtx.strokeRect(75, 75, 30, 30);
+      } else if (mode === "bbox") {
+        drawCvPattern("raw");
+        cvCtx.strokeStyle = "#10b981";
+        cvCtx.lineWidth = 2;
+        cvCtx.strokeRect(20, 20, 90, 90);
+        cvCtx.fillStyle = "#10b981";
+        cvCtx.font = "9px monospace";
+        cvCtx.fillText("Class: Object (0.98)", 22, 16);
+      }
+    }
+
+    // n8n Workflow Step-by-Step Simulation
+    let isPipelineRunning = false;
+    async function runPipelineSimulation() {
+      if (isPipelineRunning) return;
+      isPipelineRunning = true;
+      const status = document.getElementById("pipelineStatus");
+      const term = document.getElementById("n8nTerminal");
+      const nodes = [
+        { id: "nodeWebhook", text: "Webhook: Received JSON Payload (200 OK)", delay: 400 },
+        { id: "nodeValidate", text: "Schema Validation: Sanitized 18 Fields via Python", delay: 500 },
+        { id: "nodeEnrich", text: "AI Node: Generated Summary & Vector Embedding via LLM API", delay: 600 },
+        { id: "nodeSync", text: "DB Sync: Committed Transaction to PostgreSQL (Zero Errors)", delay: 400 }
+      ];
+
+      // Reset
+      document.querySelectorAll(".flow-node").forEach(n => {
+        n.classList.remove("active", "completed");
+      });
+      term.innerHTML = '<div class="sim-log-line muted">> Ingestion pipeline started...</div>';
+      status.textContent = "Status: Executing...";
+      status.style.color = "var(--accent-cyan)";
+
+      for (let i = 0; i < nodes.length; i++) {
+        const nodeEl = document.getElementById(nodes[i].id);
+        nodeEl.classList.add("active");
+        term.innerHTML += `<div class="sim-log-line">> Step ${i+1}: ${nodes[i].text}</div>`;
+        term.scrollTop = term.scrollHeight;
+        await new Promise(r => setTimeout(r, nodes[i].delay));
+        nodeEl.classList.remove("active");
+        nodeEl.classList.add("completed");
+      }
+
+      status.textContent = "Status: Success (All Nodes Green)";
+      status.style.color = "var(--accent-emerald)";
+      term.innerHTML += '<div class="sim-log-line success">> Pipeline run finished in 1.9s. Idempotency confirmed.</div>';
+      term.scrollTop = term.scrollHeight;
+      isPipelineRunning = false;
+    }
+
+    // Toast Notifications
+    function showToast(msg) {
+      const toast = document.getElementById("toastNotification");
+      const toastMsg = document.getElementById("toastMessage");
+      toastMsg.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+
+    // Copy Email
+    function copyEmail() {
+      const email = "dev112yad@gmail.com";
+      navigator.clipboard.writeText(email).then(() => {
+        showToast("Copied: dev112yad@gmail.com");
+      }).catch(() => {
+        showToast("dev112yad@gmail.com");
+      });
+    }
+
+    // Copy Portfolio URL
+    function copyPortfolioLink() {
+      const dummyUrl = window.location.href;
+      navigator.clipboard.writeText(dummyUrl).then(() => {
+        showToast("Portfolio link copied to clipboard!");
+      }).catch(() => {
+        showToast("Portfolio link ready to share!");
+      });
+    }
+
+    // Modal Control
+    const hostModal = document.getElementById("hostGuideModal");
+    document.getElementById("openHostGuideBtn").addEventListener("click", () => {
+      hostModal.classList.add("open");
+    });
+    function closeHostGuideModal() {
+      hostModal.classList.remove("open");
+    }
+    function closeModalOnBackdrop(e) {
+      if (e.target === hostModal) {
+        closeHostGuideModal();
+      }
+    }
+
+    // Recruiter Note Form Handler
+    function handleRecruiterSend(e) {
+      e.preventDefault();
+      const name = document.getElementById("recruiterName").value;
+      const role = document.getElementById("recruiterRole").value;
+      const msg = document.getElementById("recruiterMessage").value;
+      
+      const subject = encodeURIComponent(`Internship Opportunity: ${role} - ${name}`);
+      const body = encodeURIComponent(`Hi Devraj,\n\nI reviewed your portfolio and would like to connect regarding the ${role} position.\n\nMessage:\n${msg}\n\nBest regards,\n${name}`);
+      
+      showToast("Opening your email client to send message to Devraj...");
+      window.location.href = `mailto:dev112yad@gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
